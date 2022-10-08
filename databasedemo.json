@@ -1,0 +1,28 @@
+[
+{
+"name": "Alvintran",
+"dob": "2002-03-07",
+"gender": "Male",
+"email": "Thunderbird01@gmail.com",
+"grade": "9.5",
+"year": "2022",
+"image": "https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/285485248_696929144731663_3656744253436474414_n.jpg?stp=c0.106.960.960a_dst-jpg_s851x315&_nc_cat=100&ccb=1-7&_nc_sid=da31f3&_nc_ohc=eR7qZ4n0L2cAX99cnXh&tn=7Sc9KjfCOjyKKdyv&_nc_ht=scontent.fhan4-3.fna&oh=00_AT9l_szL4EJOvHnDklSoI0vd6fh0fWR2EsGotSYBl7PLxg&oe=6346BF58"
+},
+{
+"name": "Annenguyen",
+"dob": "1999-09-13",
+"gender": "Female",
+"email": "Princess01@gmail.com",
+"grade": "9",
+"year": "2022",
+"image": "https://scontent.fhan4-3.fna.fbcdn.net/v/t39.30808-6/294925590_726418428449401_1667562459478540573_n.jpg?stp=c0.225.1366.1366a_cp6_dst-jpg_s851x315&_nc_cat=100&ccb=1-7&_nc_sid=da31f3&_nc_ohc=ED3heoL9RP4AX-p_bXU&_nc_ht=scontent.fhan4-3.fna&oh=00_AT9yo9T53AhwIUi5wRHoaYOzvBCTbexqwDZkwV-83SK2lA&oe=634690DB"
+},
+"name": "sunny",
+"dob": "2003-03-16",
+"gender": "Female",
+"email": "Sunrise01@gmail.com",
+"grade": "7",
+"year": "2022",
+"image": "https://scontent.fhan3-4.fna.fbcdn.net/v/t39.30808-6/280272244_678360726588505_972372431001348274_n.jpg?stp=dst-jpg_s851x315&_nc_cat=104&ccb=1-7&_nc_sid=da31f3&_nc_ohc=y5mY6a1ukN4AX_b3v3_&tn=7Sc9KjfCOjyKKdyv&_nc_ht=scontent.fhan3-4.fna&oh=00_AT9boRPDcY2jSypfZ1Ux24EJwgh5jfDJf7x4iw4FiwUa7Q&oe=63452FCC"
+}
+]
