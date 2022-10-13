@@ -11,11 +11,12 @@ var lecturerRouter = require('./routes/lecturer')
 
 var hbs = require('hbs');
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
-
+hbs.registerHelper('equal', require('handlebars-helper-equal'));
 
 //khai bao mongoose
 var mongoose = require('mongoose')
-var url = "mongodb+srv://nghia_tm:Tmnghia730002.@cluster0.vg73gli.mongodb.net/cloud"
+var url = "mongodb://localhost:27017/cloud"
+// var url = "mongodb+srv://nghia_tm:Tmnghia730002.@cluster0.vg73gli.mongodb.net/cloud"
 mongoose.connect(url, { useNewUrlParser: true}, err => {
   if (!err) {
     console.log('DB connect succeed !')
