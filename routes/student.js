@@ -1,19 +1,24 @@
-var express = require('express')
-const {
-    routes
-} = require('../app')
-const StudentModel = require('../models/StudentModels')
-var router = express.Router()
+const express = require('express')
+const StudentModel = require('../models/StudentModel')
+const router = express.Router()
+
+
+router.get('/drop', (req, res) => {
+    StudentModel.deleteMany({}, () => {
+        console.log("Delete all data succeed !")
+        res.redirect('/student')
+    })
+})
+
+
 
 //URL: localhost:3000/student
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
     StudentModel.find((err, data) => {
         if (!err) {
-            // res.send()
-            res.render('student/index', {
-                student: data
-            });
-
+            //res.send(data)
+            //render ra trang index ở thư mục views/student
+            res.render('student/index', { student: data })
         }
     })
 })
@@ -21,59 +26,113 @@ router.get("/", (req, res) => {
 router.get('/api', (req, res) => {
     StudentModel.find((err, data) => {
         if (!err) {
+            //res.send(data)
+            //render ra trang index ở thư mục views/student
             res.json(data)
         }
     })
 })
-//chuc nang delete
+
 router.get('/delete/:id', (req, res) => {
     StudentModel.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             console.log(err)
         } else {
-            console.log("Deleted student success !");
-            var message = "Deleted student success!";
-            res.redirect("/student")
-
-        }
-    })
-})
-//chuc nang add
-router.get('/add', (req, res) => {
-    res.render("student/new")
-})
-
-//xử lý dữ liệu từ form add
-router.post('/add', (req, res) => {
-    var student = new StudentModel(req.body);
-    student.save((err) => {
-        if (!err) {
-            console.log("Add student succeed !")
+            console.log("Delete student succeed !");
+            //var message = "Delete student succeed !";
+            //redirect về trang /student (URL không phải view)
             res.redirect("/student");
         }
     })
 })
-//chức năng edit
-router.get('/edit/:id', (req, res) => {
-    StudentModel.findById(req.params.id, (err, data) => {
+
+//render ra form ADD
+router.get('/add', (req, res) => {
+    res.render("student/new");
+})
+
+//nhận & xử lý dữ liệu từ form ADD
+router.post('/add', (req, res) => {
+    //Cách 1: dùng "save"
+    // var student = new StudentModel(req.body)
+    // student.save((err) => {
+    //     if (err) {
+    //         console.log(err)
+    //     } else {
+    //         console.log("Add student succeed !")
+    //         res.redirect("/student")
+    //     }
+    // })
+    //Cách 2: dùng "create"
+    StudentModel.create(req.body, (err) => {
         if (!err) {
-            //render ra file: update.hbs (trong thư mục views/student)
-            // gửi kèm dữ liệu của object student để load vào form edit
-            //student (tên) , data (dữ liệu)
-            res.render("student/update", {
-                student: data
-            })
+            console.log('Add student succeed !')
+            res.redirect("/student")
         }
     })
 })
 
-//nhận và xử lý dữ liệu từ form edit
-router.post('/edit/:id', (req, res) => {
-    StudentModels.findByIdAndUpdate(req.params.id, req.body, (err) => {
+//render ra form EDIT
+router.get('/edit/:id', (req, res) => {
+    StudentModel.findById(req.params.id, (err, data) => {
         if (!err) {
-            console.log("Update student success !")
-            routes.render("/student")
+            //render ra file: update.hbs (trong thư mục views/student)
+            //gửi kèm dữ liệu của object student để load vào form edit
+            //student (tên) , data (dữ liệu)
+            res.render("student/update", { student: data })
         }
     })
 })
-module.exports = router;
+
+//nhận & xử lý dữ liệu từ form EDIT
+router.post('/edit/:id', (req, res) => {
+    var id = req.params.id;
+    var student = req.body;
+    StudentModel.findByIdAndUpdate(id, student, (err) => {
+        if (!err) {
+            console.log("Update student succeed !")
+            res.redirect("/student")
+        }
+    })
+})
+
+router.get('/detail/:id', (req, res) => {
+    StudentModel.findById(req.params.id, (err, student) => {
+        if (!err) {
+            res.render('student/info', { student: student })
+        }
+    })
+})
+
+//search function
+router.post('/search', (req, res) => {
+    StudentModel.find({ name: new RegExp(req.body.name, "i") }, (err, data) => {
+        if (!err) {
+            res.render('student/index', { student: data })
+        }
+    })
+})
+//sort function
+router.get('/sort/asc', (req, res) => {
+    StudentModel.find()
+        .sort({ name: 1 })
+        .exec((err, data) => {
+            if (!err) {
+                res.render('student/index', { student: data })
+            }
+        })
+})
+
+router.get('/sort/desc', (req, res) => {
+    StudentModel.find()
+        .sort({ name: -1 })
+        .exec((err, data) => {
+            if (!err) {
+                res.render('student/index', { student: data })
+            }
+        })
+})
+
+
+
+module.exports = router
