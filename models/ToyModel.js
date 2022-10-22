@@ -1,15 +1,12 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
-var StudentSchema = new schema({
+var ToySchema = new schema({
     name: String,
-    email: String,
-    gender: String,
     image: String,
-    dob: Date,
-    year: Number,
-    grade: Number,
-    graduated: Boolean,
+    type: String,
+    fmg: Date,
+    price: Number
 },
 {
   VersionKey: false //optional (to remove _v when add new data)
@@ -17,5 +14,5 @@ var StudentSchema = new schema({
 )
 
 //Note: tham số cuối cùng bắt buộc phải là tên của collection (table) trong DB
-var StudentModel = mongoose.model('student', StudentSchema, 'student')
-module.exports = StudentModel
+var ToyModel = mongoose.model('toy', ToySchema, 'toy')
+module.exports = ToyModel

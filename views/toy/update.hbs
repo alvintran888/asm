@@ -1,0 +1,48 @@
+<div class="container col-md-8 mt-5">
+   <form action="/toy/edit/{{toy._id}}" method="post" class="card p-3 bg-light text-center">
+      <h2 class="text text-primary">Edit product</h2>
+
+      {{!-- tên --}}
+      <div class="form-group">
+         <label class="text-success h6">Product Name</label>
+         <input class="form-control" type="text" name="name" value="{{toy.name}}" required minlength="3"
+            maxlength="20">
+      </div>
+{{!-- ảnh sp --}}
+      <div class="form-group mt-3">
+         <label class="text-success h6">Product Image</label><br>
+         <img src="{{toy.image}}" width="100" height="100">
+         <input class="form-control mt-3" type="text" name="image" value="{{toy.image}}" required>
+      </div>
+
+{{!-- thể loại chạy pin và không --}}
+<div class="form-group mt-3">
+         <label class="text-success h6">Type</label>
+         <br>
+         {{#equal toy.type "batteries"}}
+         Batteries <input type="radio" name="type" value="batteries" checked>
+         Action <input type="radio" name="type" value="action">
+         {{/equal}}
+         {{#equal toy.type "action"}}
+         Batteries <input type="radio" name="type" value="batteries">
+         Action <input type="radio" name="type" value="acion" checked>
+         {{/equal}}
+      </div>
+      
+{{!-- ngày sản xuất --}}
+      <div class="form-group mt-3">
+         <label class="text-success h6">Manufacturing Date</label>
+         <input class="form-control" type="date" name="fmg" value="{{dateFormat toy.fmg 'YYYY-MM-DD'}}" required>
+      </div>
+
+{{!-- giá --}}
+      <div class="form-group mt-3">
+         <label class="text-success h6">Price</label>
+         <input class="form-control" type="number" name="grade" value="{{toy.price}}" required min=1000 max=100000000>
+      </div>
+
+      <div class="form-group mt-3">
+         <input class="btn btn-primary mt-3" type="submit" value="Edit">
+      </div>
+   </form>
+</div>

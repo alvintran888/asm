@@ -5,9 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index')
-var studentRouter = require('./routes/student')
-var lecturerRouter = require('./routes/lecturer')
+var toyRouter = require('./routes/toy')
 var apiRouter = require('./routes/api')
+var cateRouter = require('./routes/cate')
 
 //Lỗi cors là một chính sách của trình duyệt nhằm ngăn chặn việc truy cập tài nguyên của các domain khác khi không được phép
 var cors = require('cors')
@@ -18,8 +18,8 @@ hbs.registerHelper('equal', require('handlebars-helper-equal'));
 
 //khai bao mongoose
 var mongoose = require('mongoose')
-var url = "mongodb://localhost:27017/cloud"
-// var url = "mongodb+srv://nghia_tm:Tmnghia730002.@cluster0.vg73gli.mongodb.net/cloud"
+// var url = "mongodb://localhost:27017/cloud"
+var url = "mongodb+srv://nghia_tm:Tmnghia730002.@cluster0.vg73gli.mongodb.net/toy"
 mongoose.connect(url, { useNewUrlParser: true}, err => {
   if (!err) {
     console.log('DB connect succeed !')
@@ -45,9 +45,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-app.use('/student', studentRouter)
-app.use('/lecturer', lecturerRouter)
+app.use('/toy', toyRouter)
 app.use('/api', apiRouter)
+app.use('/cate', cateRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
