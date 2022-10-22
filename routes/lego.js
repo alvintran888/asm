@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
             //res.send(data)
             //render ra trang index ở thư mục views/toy
             res.render('lego/index', { lego: data })
+            // console.log(data);
         }
     })
 })

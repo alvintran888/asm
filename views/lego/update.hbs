@@ -41,6 +41,16 @@
          <input class="form-control" type="number" name="grade" value="{{lego.price}}" required min=1000 max=100000000>
       </div>
 
+
+{{!-- xuất xứ --}}
+<label class="text-success h6">Origin</label>
+<select name="year" class="form-control">
+            <option value="{{origin}}">TQ</option>
+            <option value="{{origin}}">VN</option>
+         </select>
+
+
+
       <div class="form-group mt-3">
          <input class="btn btn-primary mt-3" type="submit" value="Submit">
       </div>

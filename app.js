@@ -19,8 +19,8 @@ hbs.registerHelper('equal', require('handlebars-helper-equal'));
 
 //khai bao mongoose
 var mongoose = require('mongoose')
-// var url = "mongodb://localhost:27017/cloud"
-var url = "mongodb+srv://nghia_tm:Tmnghia730002.@cluster0.vg73gli.mongodb.net/toy"
+var url = "mongodb://localhost:27017/cloud"
+// var url = "mongodb+srv://nghia_tm:Tmnghia730002.@cluster0.vg73gli.mongodb.net/toy"
 mongoose.connect(url, { useNewUrlParser: true}, err => {
   if (!err) {
     console.log('DB connect succeed !')

@@ -6,7 +6,8 @@ var legoSchema = new schema({
     image: String,
     type: String,
     fmg: Date,
-    price: Number
+    price: Number,
+    origin: String
 },
 {
   VersionKey: false //optional (to remove _v when add new data)
