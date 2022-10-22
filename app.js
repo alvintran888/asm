@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index')
 var toyRouter = require('./routes/toy')
+var legoRouter = require('./routes/lego')
 var apiRouter = require('./routes/api')
 var cateRouter = require('./routes/cate')
 
@@ -48,6 +49,8 @@ app.use('/', indexRouter);
 app.use('/toy', toyRouter)
 app.use('/api', apiRouter)
 app.use('/cate', cateRouter)
+app.use('/lego', legoRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -2,8 +2,8 @@
    <tr>
       <th class="text-primary" colspan="5">Product List</th>
       <th>
-         <a class="btn btn-primary" href="/toy/add">ADD</a>
-         <a class="btn btn-success" href="/toy/drop"
+         <a class="btn btn-primary" href="/lego/add">ADD</a>
+         <a class="btn btn-success" href="/lego/drop"
             onclick="return confirm('Are you sure to drop all product ?');">DROP</a>
       </th>
    </tr>
@@ -19,24 +19,24 @@
       <th colspan="5">
          <select class="form-control" onchange="window.location.href=this.value">
             <option value="">Sort by name</option>
-            <option value="/toy/sort/asc">Ascending</option>
-            <option value="/toy/sort/desc">Descending</option>
+            <option value="/lego/sort/asc">Ascending</option>
+            <option value="/lego/sort/desc">Descending</option>
          </select>
       </th>
       <th colspan="1">
-         <form action="/toy/search" method="post">
+         <form action="/lego/search" method="post">
             <div class="form-group">
                <input class="form-control" type="search" name="name" placeholder="Search by name">
             </div>
          </form>
       </th>
    </tr>
-   {{#each toy }}
+   {{#each lego }}
    <tr>
       <td>{{name}}</td>
 
       <td>
-         <a href="/toy/detail/{{_id}}">
+         <a href="/lego/detail/{{_id}}">
             <img src="{{image}}" width="100" height="100">
          </a>
       </td>
@@ -48,8 +48,8 @@
       <td>{{price}}</td>
 
       <td>
-         <a class="btn btn-success" href="/toy/edit/{{_id}}">EDIT</a>
-         <a class="btn btn-danger" href="/toy/delete/{{_id}}">DELETE</a>
+         <a class="btn btn-success" href="/lego/edit/{{_id}}">EDIT</a>
+         <a class="btn btn-danger" href="/lego/delete/{{_id}}">DELETE</a>
       </td>
    </tr>
    {{/each}}
